@@ -4,9 +4,13 @@
   "description": "Esecitazione di gruppo bastata sul gioco del tris",
   "main": "index.js",
   "dependencies": {
-    "karma": "^4.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "karma": "^4.0.1",
+    "jasmine-core": "^3.3.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^2.0.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
