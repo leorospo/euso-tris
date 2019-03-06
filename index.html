@@ -70,150 +70,29 @@
         <div class="center">
                 <table>
                     <tr>
-                        <td id="1"></td>
-                        <td id="2"></td>
-                        <td id="3"></td>
+                        <td id="1" data-x="0" data-y="0" onclick="trisClick(this)"></td>
+                        <td id="2" data-x="0" data-y="1" onclick="trisClick(this)"></td>
+                        <td id="3" data-x="0" data-y="2" onclick="trisClick(this)"></td>
                     </tr>
         
                     <tr>
-                        <td id="4"></td>
-                        <td id="5"></td>
-                        <td id="6"></td>
+                        <td id="4" data-x="1" data-y="0" onclick="trisClick(this)"></td>
+                        <td id="5" data-x="1" data-y="1" onclick="trisClick(this)"></td>
+                        <td id="6" data-x="1" data-y="2" onclick="trisClick(this)"></td>
                     </tr>
         
                     <tr>
-                        <td id="7"></td>
-                        <td id="8"></td>
-                        <td id="9"></td>
+                        <td id="7" data-x="2" data-y="0" onclick="trisClick(this)"></td>
+                        <td id="8" data-x="2" data-y="1" onclick="trisClick(this)"></td>
+                        <td id="9" data-x="2" data-y="2" onclick="trisClick(this)"></td>
                     </tr>
         
                 </table>
 
-                <button style="margin-top: 60px" onclick="location.reload()">Play again</button>
+                <button style="margin-top: 60px" onclick="resetGame()">Play again</button>
             </div>
 
     <script>
-
-        let td_arr = document.getElementsByTagName("td")
-        let turn
-        let slots = {
-            uno: undefined,
-            due: undefined,
-            tre: undefined,
-            quattro: undefined,
-            cinque: undefined,
-            sei: undefined,
-            sette: undefined,
-            otto: undefined,
-            nove: undefined
-
-        }
-
-        for (var property in td_arr) {
-
-            //Only use td with an #id
-            let id = td_arr[property].id
-            let element = document.getElementById(id)
-            if (id !== undefined){
-                element.addEventListener("click", function() {click_event(element)})
-            }
-
-        }
-
-        function click_event(element) {
-            id = element.id
-            obj_prop = id_to_obj(id)
-
-            if (slots[obj_prop] === undefined) {
-                occupy(id, obj_prop)
-                save_move(id)
-                check_winner()          
-
-            }
-  
-        }
-
-        function occupy(id, obj_prop) {
-
-            if (turn == 'cross' ) turn = 'circle'
-            else turn = 'cross'
-
-            document.getElementById(id).innerHTML = "<div class=\"occupied " + turn + "\">"
-
-        }
-
-        function check_winner() {
-            if ( slots.uno != undefined && ((slots.uno==slots.due && slots.uno==slots.tre) || (slots.uno==slots.quattro && slots.uno==slots.sette)) ){ alert('Ha vinto '+ slots.uno)}
-            if ( slots.nove != undefined && ((slots.nove==slots.sei && slots.nove==slots.tre) || (slots.nove==slots.otto && slots.nove==slots.sette)) ){ alert('Ha vinto '+ slots.nove)}
-            if ( slots.cinque != undefined && ((slots.cinque==slots.uno && slots.cinque==slots.nove) || (slots.cinque==slots.tre && slots.cinque==slots.sette) ||(slots.cinque==slots.due && slots.cinque==slots.otto) || (slots.cinque==slots.quattro && slots.cinque==slots.sei) ) ){ alert('Ha vinto '+ slots.cinque)}
-        }
-
-        function id_to_obj(id) {
-            switch(id) {
-                case '1':
-                    return "uno"
-                break;
-                case '2':
-                    return "due"
-                break;
-                case '3':
-                    return "tre"
-                break;
-                case '4':
-                    return "quattro"
-                break;
-                case '5':
-                    return "cinque"
-                break;
-                case '6':
-                    return "sei"
-                break;
-                case '7':
-                    return "sette"
-                break;
-                case '8':
-                    return "otto"
-                break;
-                case '9':
-                    return "nove"
-                break;
-            }
-
-        }
-
-        function save_move(id) {
-
-            switch(id) {
-                case '1':
-                    slots.uno = turn
-                break;
-                case '2':
-                    slots.due = turn
-                break;
-                case '3':
-                    slots.tre = turn
-                break;
-                case '4':
-                    slots.quattro = turn
-                break;
-                case '5':
-                    slots.cinque = turn
-                break;
-                case '6':
-                    slots.sei = turn
-                break;
-                case '7':
-                    slots.sette = turn
-                break;
-                case '8':
-                    slots.otto = turn
-                break;
-                case '9':
-                    slots.nove = turn
-                break;
-            }
-        }
-
 
 
     </script>
