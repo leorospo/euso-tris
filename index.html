@@ -70,29 +70,126 @@
         <div class="center">
                 <table>
                     <tr>
-                        <td id="1"></td>
-                        <td id="2"></td>
-                        <td id="3"></td>
+                        <td id="1" data-x="0" data-y="0" onclick="trisClick(this)"></td>
+                        <td id="2" data-x="0" data-y="1" onclick="trisClick(this)"></td>
+                        <td id="3" data-x="0" data-y="2" onclick="trisClick(this)"></td>
                     </tr>
         
                     <tr>
-                        <td id="4"></td>
-                        <td id="5"></td>
-                        <td id="6"></td>
+                        <td id="4" data-x="1" data-y="0" onclick="trisClick(this)"></td>
+                        <td id="5" data-x="1" data-y="1" onclick="trisClick(this)"></td>
+                        <td id="6" data-x="1" data-y="2" onclick="trisClick(this)"></td>
                     </tr>
         
                     <tr>
-                        <td id="7"></td>
-                        <td id="8"></td>
-                        <td id="9"></td>
+                        <td id="7" data-x="2" data-y="0" onclick="trisClick(this)"></td>
+                        <td id="8" data-x="2" data-y="1" onclick="trisClick(this)"></td>
+                        <td id="9" data-x="2" data-y="2" onclick="trisClick(this)"></td>
                     </tr>
         
                 </table>
 
-                <button style="margin-top: 60px" onclick="location.reload()">Play again</button>
+                <button style="margin-top: 60px" onclick="resetGame()">Play again</button>
             </div>
 
     <script>
+
+        var boardStatus = [
+            [undefined,undefined,undefined],
+            [undefined,undefined,undefined],
+            [undefined,undefined,undefined]
+        ]
+
+        var turn = 'cross'
+
+        function trisClick(el) {
+            var clickedX = el.dataset.x
+            var clickedY = el.dataset.y
+
+            if (isValidStep(boardStatus, turn , clickedX, clickedY)) {
+                boardStatus[clickedX][clickedY] = turn
+                setValues(boardStatus)
+                changeTurn()
+
+            }
+                
+            //if
+           // getWinner()
+                //showWinner()
+            
+
+        }
+
+        function isValidStep(matrix, turn, x, y) {
+            return matrix[x][y] == undefined ? true : false
+        }
+
+        function setValues(matrix) {
+            for (let x in matrix) {
+                for(let y in matrix[x]) {
+                    let id = xyToId(x, y)
+                    if(undefined !== matrix[x][y]) {
+                        document.getElementById(id).innerHTML = "<div class=\"occupied " + matrix[x][y] + "\">"
+                    }
+                }
+            }
+        }
+
+        function xyToId(x, y) {
+            let xy = "" + x + y
+            switch (xy) {
+                case '00':
+                    return 1
+                    break;
+                case '01':
+                    return 2
+                    break;
+                case '02':
+                    return 3
+                    break;
+                case '10':
+                    return 4
+                    break;
+                case '11':
+                    return 5
+                    break;
+                case '12':
+                    return 6
+                    break;
+                case '20':
+                    return 7
+                    break;
+                case '21':
+                    return 8
+                    break;
+                case '22':
+                    return 9
+                    break;
+            }
+        }
+
+        function changeTurn() {
+           turn = turn == 'cross' ? 'circle' : 'cross'
+        }
+
+        function resetGame() {
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
         let td_arr = document.getElementsByTagName("td")
         let turn
@@ -213,7 +310,7 @@
                 break;
             }
         }
-
+*/
 
 
     </script>
