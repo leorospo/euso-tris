@@ -1,25 +1,39 @@
-
+// Test GetWinner
 describe("Winning options", function() {
 
+    const X = "cross"
+    const O = "circle"
     var initialState = [[,,],[,,],[,,]]
-    var crossWins1 = [[1,1,1],[,,],[,,]]
-    var crossWins1 = [[1,,],[1,,],[1,,]]
-    var crossWins1 = [[1,,],[,1,],[,,1]]
+    var horizontalWin1 = [[X,X,X],[,O,],[,,]]
+    var horizontalWin2 = [[,,],[X,X,X],[,O,O]]
+    var horizontalWin3 = [[,O,],[,O,],[X,X,X]]
+    var verticalWin1 = [[X,,],[X,,],[X,,]]
+    var verticalWin2 = [[,X,],[,X,O],[,X,]]
+    var verticalWin3 = [[,X,],[,X,],[,X,]]
+    var diagonalWins1 = [[X,O,],[,X,],[,,X]]
+    var diagonalWins2 = [[,,X],[,X,],[X,O,]]
 
-    it("Cross wins", function() {
-        expect(getWinner()).toBe('cross');
+    var draw = [[X,O,X],[X,O,O],[O,X,X]]
+
+    it("Draw", function(){
+        expect(getWinner(draw)).toBe(null)
     });
 
-    it("Circle wins", function() {
-        expect(getWinner()).toBe('circle');
+    it("Win", function() {
+        expect(getWinner(horizontalWin1)).toBe(X);
+        expect(getWinner(horizontalWin2)).toBe(X);
+        expect(getWinner(horizontalWin3)).toBe(X);
+        expect(getWinner(verticalWin1)).toBe(X);
+        expect(getWinner(verticalWin2)).toBe(X);
+        expect(getWinner(verticalWin3)).toBe(X);
+        expect(getWinner(diagonalWins1)).toBe(X);
+        expect(getWinner(diagonalWins2)).toBe(X);
     });
-
-    it("Draw", function() {
-        expect(getWinner()).toBe('draw');
-    });
-
+  
     it("Not ending move", function() {
-        expect(getWinner(initialState)).toBe('null');
+        expect(getWinner(initialState)).toBe(null);
     });
 
 });
+
+
