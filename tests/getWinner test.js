@@ -1,4 +1,18 @@
-// Test GetWinner
+// Mostra Vincitore
+
+describe("Messaggio Vittoria",function(){
+    document.body.innerHTML = __html__['index.html']
+    const X = "cross"
+    const O = "circle"
+    showWinner([[X,X,X],[,O,],[,,]])
+
+    it("Stampa risultato",function(){
+        expect(document.getElementById('result').innerHTML).toEqual("Ha vinto cross")
+    })
+});
+
+// Vincitore
+
 describe("Winning options", function() {
 
     const X = "cross"

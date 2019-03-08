@@ -83,7 +83,8 @@ function getWinner(matrix) {
 }
 
 function showWinner(matrix) {
-    alert('Ha vinto ' + getWinner(matrix))
+   // alert('Ha vinto ' + getWinner(matrix))
+  document.getElementById('result').innerHTML= 'Ha vinto ' + getWinner(matrix)
 }
 
 function resetGame() {

@@ -4,6 +4,7 @@
   "description": "Esecitazione di gruppo bastata sul gioco del tris",
   "main": "index.js",
   "dependencies": {
+    "karma-html2js-preprocessor": "^1.1.0"
   },
   "devDependencies": {
     "karma": "^4.0.1",
